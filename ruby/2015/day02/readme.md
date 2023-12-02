@@ -1,4 +1,4 @@
-[2015](./readme.md)
+[2015](../readme.md)
 
 # Day 2: I Was Told There Would Be No Math
 
