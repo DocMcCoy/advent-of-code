@@ -1,4 +1,4 @@
-[Main](../readme.md)
+[Main](../README.md)
 
 # Ruby Advent of Code
 
