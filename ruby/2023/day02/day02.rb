@@ -1,4 +1,4 @@
-def day02_test_input_1
+def day02_test_input
   [
     "Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green",
     "Game 2: 1 blue, 2 green; 3 green, 4 blue, 1 red; 1 green, 1 blue",
@@ -18,8 +18,9 @@ end
 
 def parsedInput(input)
   input.map do |line|
-    lineHash = createHash(line)
+    lineHash            = createHash(line)
     lineHash[:possible] = checkIfGameIsPossible(lineHash)
+    lineHash[:power]    = lineHash[:red] * lineHash[:green] * lineHash[:blue]
     lineHash
   end
 end
@@ -58,5 +59,10 @@ def sumOfPossibleGames(games)
   games.select { |game| game[:possible] == true }.map { |game| game[:id] }.sum
 end
 
+def sumOfGamesPowers(games)
+  games.map { |game| game[:power] }.sum
+end
+
 puts "The sume of the IDs of the games that are possible is: #{sumOfPossibleGames(parsedInput(day02_input))}"
 
+puts "The sum of the Powers of all the games is #{sumOfGamesPowers(parsedInput(day02_input))}"
