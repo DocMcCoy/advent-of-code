@@ -4,3 +4,4 @@
 
 - [Day 1: Trebuchet?!](./day01/readme.md)
 - [Day 2: Cube Conundrum](./day02/readme.md)
+- [Day 3: Gear Ratios](./day03/readme.md)
