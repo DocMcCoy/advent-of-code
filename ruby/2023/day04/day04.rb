@@ -51,4 +51,26 @@ def sum_of_points cards
   "Total Points of All the Cards is: #{parsed_cards.map { |card| card[:points] }.sum}"
 end
 
+def calculate_new_cards parsed_cards
+  puts "Original Cards: #{parsed_cards.length}"
+  original_cards = parsed_cards
+  winning_cards  = parsed_cards.reject{|card| card[:matches].length == 0}
+  puts "Winning Cards: #{winning_cards.length}"
+  losing_cards   = parsed_cards.select{|card| card[:matches].length == 0}
+  puts "Losing Cards: #{losing_cards.length}"
+  winning_cards.flat_map.with_index do |card, outer_index|
+    puts outer_index
+    array = card[:matches].map.with_index do |match, inner_index|
+      card_increment = inner_index + 1
+      copy_card = original_cards.find { |c| c[:id] == card[:id] + card_increment }
+      winning_cards << copy_card unless copy_card.nil?
+    end
+    winning_cards
+  end
+  puts winning_cards.concat(losing_cards).select{|card| card[:id] === 4}.length
+  "Total Scratchcards: #{winning_cards.concat(losing_cards).length}"
+end
+
 puts sum_of_points input_day04
+
+puts calculate_new_cards(parse_input(test_input_day04))
