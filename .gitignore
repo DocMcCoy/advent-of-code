@@ -1,2 +1,4 @@
 # Ignore all .txt files so as to not include the input data in the repo
 *.txt
+# Ignore the input folder and all of its contents
+input/
