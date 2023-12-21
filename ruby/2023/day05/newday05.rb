@@ -48,6 +48,12 @@ class Seeds
   def parsed_input
     @input.chomp.split(": ")[1].split(" ").map(&:to_i)
   end
+
+  def seed_ranges
+    parsed_input.each_slice(2).to_a.map do |slice|
+      slice[0]..(slice[0] + slice[1])
+    end
+  end
 end
 
 class AlmanacMap
@@ -241,6 +247,20 @@ describe "Day 5: Almanac" do
 
       it "should return an array of the seeds" do
         expect(seeds.parsed_input).to eq([79, 14, 55, 13])
+      end
+    end
+
+    describe "seed_ranges method" do
+      it "should respond" do
+        expect(seeds).to respond_to(:seed_ranges)
+      end
+
+      it "should return an array" do
+        expect(seeds.seed_ranges).to be_an_instance_of(Array)
+      end
+
+      it "should return an array of the seed range" do
+        expect(seeds.seed_ranges).to eq([79..93, 55..68])
       end
     end
   end
